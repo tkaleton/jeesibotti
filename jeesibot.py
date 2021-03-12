@@ -5,6 +5,7 @@ import random
 import json
 from gifit import gifit
 from myyntitekstit import myyntitekstit
+from musattimet import musat
 
 #from keep_alive import keep_alive
 
@@ -42,6 +43,10 @@ async def on_message(message):
     print("Sent following quote to server: " + quote +"\r\r" )
     await message.channel.send(quote)
     
+  if message.content.startswith('!taustamelua'):
+    random.shuffle(musat)
+    for biisi in musat:
+      await message.channel.send("!play " + biisi)
 
   if message.content.startswith(('!jeesi' , '!jeesibot')):
     await message.channel.send("Jeesibotti tässä terve!\rOsaan seuraavat käskyt:\r!scrim / !scrims / !scrimit: Luo scrimikutsun tajunnanräjäyttävällä mainostekstillä :D \r !rockmyday / !rockyourday / !ryd: Tuo mietelauseen, joka mullistaa elämäsi\r !teevoileipa: Tekee voileivän")
