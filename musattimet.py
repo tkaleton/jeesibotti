@@ -1,4 +1,5 @@
-musat = ["", "https://www.youtube.com/watch?v=49tpIMDy9BE",
+musat = ["https://www.youtube.com/watch?v=DCyTijJzEwo",
+"https://www.youtube.com/watch?v=49tpIMDy9BE",
 "Winx Club Finnish opening 1 + SANAT! (lyrics!)",
 "Grandioosa pizza perjantai",
 "https://www.youtube.com/watch?v=JXEK-fc3_BU",
