@@ -45,7 +45,6 @@ async def on_message(message):
     
   if message.content.startswith('!taustamelua'):
     random.shuffle(musat)
-    await message.channel.send("tää menee herokuun mut looppi ei toimi" )
     for biisi in musat:
       await message.channel.send("!play " + biisi)
 
