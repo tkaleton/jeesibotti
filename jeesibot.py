@@ -2,7 +2,9 @@ import discord
 import os
 import requests
 import random
+import time
 import json
+import discord.ext
 from gifit import gifit
 from myyntitekstit import myyntitekstit
 from musattimet import musat
@@ -45,8 +47,15 @@ async def on_message(message):
     
   if message.content.startswith('!taustamelua'):
     random.shuffle(musat)
+    author = message.author
+    channel = author.channel
+
+    await channel.connect(channel)
+    time.sleep(2)
+    
     for biisi in musat:
       await message.channel.send("!play " + biisi)
+    
 
   if message.content.startswith(('!jeesi' , '!jeesibot')):
     await message.channel.send("Jeesibotti tässä terve!\rOsaan seuraavat käskyt:\r!scrim / !scrims / !scrimit: Luo scrimikutsun tajunnanräjäyttävällä mainostekstillä :D \r !rockmyday / !rockyourday / !ryd: Tuo mietelauseen, joka mullistaa elämäsi\r !teevoileipa: Tekee voileivän")
