@@ -49,7 +49,7 @@ async def on_message(message):
     random.shuffle(musat)
 
     for biisi in musat:
-      await message.channel.send("!play" + biisi)
+      await message.channel.send("!play " + biisi)
   
   if message.content.startswith(('!jeesi' , '!jeesibot')):
     await message.channel.send("Jeesibotti tässä terve!\rOsaan seuraavat käskyt:\r!scrim / !scrims / !scrimit: Luo scrimikutsun tajunnanräjäyttävällä mainostekstillä :D \r !rockmyday / !rockyourday / !ryd: Tuo mietelauseen, joka mullistaa elämäsi\r !teevoileipa: Tekee voileivän")
