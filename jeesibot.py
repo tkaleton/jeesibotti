@@ -71,7 +71,7 @@ async def on_message(message):
   if message.content.startswith('!wappujuhlaTEST'):
     if len(juhlijat) > 0:
       for juhlaheebo in juhlijat:
-        nimi = juhlaheebo.member.name
+        nimi = juhlaheebo.name
         await message.channel.send(nimi)
     else:
       await message.channel.send("No partiers t.jöbbels :cry:")
