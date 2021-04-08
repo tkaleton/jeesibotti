@@ -11,7 +11,7 @@ from musattimet import musat
 
 #from keep_alive import keep_alive
 
-
+juhlijat = []
 client = discord.Client()
 
 def get_quote():
@@ -54,6 +54,21 @@ async def on_message(message):
   if message.content.startswith(('!jeesi' , '!jeesibot')):
     await message.channel.send("Jeesibotti tässä terve!\rOsaan seuraavat käskyt:\r!scrim / !scrims / !scrimit: Luo scrimikutsun tajunnanräjäyttävällä mainostekstillä :D \r !rockmyday / !rockyourday / !ryd: Tuo mietelauseen, joka mullistaa elämäsi\r !teevoileipa: Tekee voileivän")
 
-#keep_alive()
+
+  if message.content.startswith('!wappujuhlaIN'):
+    kirjoittaja = message.author
+    if kirjoittaja not in juhlijat:
+      juhlijat.append(kirjoittaja)
+    msg = 'Sinut {0.kirjoittaja.mention} on lisätty wappujuhlijoihin'.format(message)
+    await message.channel.send(msg)
+
+  if message.content.startswith('!wappujuhlaOUT'):
+    kirjoittaja = message.author
+    if author in juhlijat:
+      juhlijat.remove(kirjoittaja)
+    msg = 'Sinut {0.kirjoittaja.mention} on poistettu wappujuhlijoista'.format(message)
+    await message.channel.send(msg)
+
 client.run(os.getenv("TOKEN"))
+
 

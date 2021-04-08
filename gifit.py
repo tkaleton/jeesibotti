@@ -30,4 +30,5 @@ gifit = [
 "https://tenor.com/view/good-morning-sunshine-nic-cage-gif-5358892",
 "https://tenor.com/view/noot-penguin-ready-letsgo-gif-5803743",
 "https://tenor.com/view/yu-gi-oh-time-to-duel-card-gif-12403495"
+'https://tenor.com/view/retula-niko-j%C3%A4%C3%A4t%C3%A4v%C3%A4-apina-ice-gif-16883246'
 ]
