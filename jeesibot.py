@@ -64,7 +64,7 @@ async def on_message(message):
 
   if message.content.startswith('!wappujuhlaOUT'):
     kirjoittaja = message.author
-    if author in juhlijat:
+    if kirjoittaja in juhlijat:
       juhlijat.remove(kirjoittaja)
     msg = 'Sinut {0.kirjoittaja.mention} on poistettu wappujuhlijoista'.format(message)
     await message.channel.send(msg)
