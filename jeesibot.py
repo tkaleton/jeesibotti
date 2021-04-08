@@ -69,13 +69,12 @@ async def on_message(message):
     await message.channel.send(f'Sinut {kirjoittaja.mention} on poistettu wappujuhlijoista')
     
   if message.content.startswith('!wappujuhlaTEST'):
-    
-    for juhlaheebo in juhlijat:
-      nimi = juhlaheebo.name
-      await message.channel.send(nimi)
     if len(juhlijat) == 0:
       await message.channel.send("No partiers t.jöbbels :cry:")
-
+    else:
+      txt = ', '.join(juhlijat)
+      lkm = len(juhlijat)
+      await message.channel.send(f'juhlijoita on {lkm} kappaletta \rHe ovat {txt}')
 
 client.run(os.getenv("TOKEN"))
 
