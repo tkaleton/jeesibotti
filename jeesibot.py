@@ -69,7 +69,7 @@ async def on_message(message):
     await message.channel.send(f'Sinut {kirjoittaja.mention} on poistettu wappujuhlijoista')
     
   if message.content.startswith('!wappujuhlaTEST'):
-    txt = ', '.join(juhlijat)
+    txt = ", ".join(juhlijat)
     lkm = len(juhlijat)
     await message.channel.send(f'juhlijoita on {lkm} kappaletta \rHe ovat {txt}')
 
