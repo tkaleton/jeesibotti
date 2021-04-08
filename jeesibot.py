@@ -58,14 +58,14 @@ async def on_message(message):
     kirjoittaja = message.author
     if kirjoittaja not in juhlijat:
       juhlijat.append(kirjoittaja)
-    msg = 'Sinut {0.kirjoittaja.mention} on lisätty wappujuhlijoihin'.format(message)
+    msg = 'Sinut {0.kirjoittaja.mention} on lisätty wappujuhlijoihin'
     await message.channel.send(msg)
 
   if message.content.startswith('!wappujuhlaOUT'):
     kirjoittaja = message.author
     if kirjoittaja in juhlijat:
       juhlijat.remove(kirjoittaja)
-    msg = 'Sinut {0.kirjoittaja.mention} on poistettu wappujuhlijoista'.format(message)
+    msg = 'Sinut {0.kirjoittaja.mention} on poistettu wappujuhlijoista'
     await message.channel.send(msg)
     
   if message.content.startswith('!wappujuhlaTEST'):
