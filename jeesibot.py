@@ -52,21 +52,24 @@ async def on_message(message):
       await message.channel.send("!play " + biisi)
   
   if message.content.startswith(('!jeesi' , '!jeesibot')):
-    await message.channel.send("Jeesibotti tässä terve!\rOsaan seuraavat käskyt:\r!scrim / !scrims / !scrimit: Luo scrimikutsun tajunnanräjäyttävällä mainostekstillä :D \r !rockmyday / !rockyourday / !ryd: Tuo mietelauseen, joka mullistaa elämäsi\r !teevoileipa: Tekee voileivän \r!wappujuhlaIN: lisää sinut wappujuhlija listalle\\r!wappujuhlaOUT: poistaa wappujuhlalistalta\r")
+    await message.channel.send("Jeesibotti tässä terve!\rOsaan seuraavat käskyt:\r!scrim / !scrims / !scrimit: Luo scrimikutsun tajunnanräjäyttävällä mainostekstillä :D \r!rockmyday / !rockyourday / !ryd: Tuo mietelauseen, joka mullistaa elämäsi\r!teevoileipa: Tekee voileivän \r!wappujuhlaIN: lisää sinut wappujuhlija listalle\r!wappujuhlaOUT: poistaa wappujuhlalistalta\r")
 
   if message.content.startswith('!wappujuhlaIN'):
     kirjoittaja = message.author
     if kirjoittaja not in juhlijat:
       juhlijat.append(kirjoittaja)
-    msg = 'Sinut {kirjoittaja.mention} on lisätty wappujuhlijoihin'.format(message)
+    msg = 'Sinut {kirjoittaja.mention} on lisätty wappujuhlijoihin'
     await message.channel.send(msg)
 
   if message.content.startswith('!wappujuhlaOUT'):
     kirjoittaja = message.author
     if kirjoittaja in juhlijat:
       juhlijat.remove(kirjoittaja)
-    msg = 'Sinut {kirjoittaja.mention} on poistettu wappujuhlijoista'.format(message)
+    msg = 'Sinut {kirjoittaja.mention} on poistettu wappujuhlijoista'
     await message.channel.send(msg)
+    
+  if message.content.startswith('!wappujuhlaTEST'):
+    await message.channel.send(juhlijat)
 
 client.run(os.getenv("TOKEN"))
 
