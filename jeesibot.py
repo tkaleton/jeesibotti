@@ -69,11 +69,11 @@ async def on_message(message):
     await message.channel.send(f'Sinut {kirjoittaja.mention} on poistettu wappujuhlijoista')
     
   if message.content.startswith('!wappujuhlaTEST'):
-    if len(juhlijat) > 0:
-      for juhlaheebo in juhlijat:
-        nimi = juhlaheebo.name
-        await message.channel.send(nimi)
-    else:
+    
+    for juhlaheebo in juhlijat:
+      nimi = juhlaheebo.name
+      await message.channel.send(nimi)
+    if len(juhlijat) == 0:
       await message.channel.send("No partiers t.jöbbels :cry:")
 
 
