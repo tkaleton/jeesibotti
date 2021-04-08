@@ -58,6 +58,7 @@ async def on_message(message):
     kirjoittaja = message.author
     if kirjoittaja not in juhlijat:
       juhlijat.append(kirjoittaja)
+  
     await message.channel.send(f'Sinut {kirjoittaja.mention} on lisätty wappujuhlijoihin')
 
   if message.content.startswith('!wappujuhlaOUT'):
@@ -67,13 +68,14 @@ async def on_message(message):
     
     await message.channel.send(f'Sinut {kirjoittaja.mention} on poistettu wappujuhlijoista')
     
-  if message.content.startswith('!wappujuhlijat'):
-    
-    for juhlaheebo in juhlijat:
-        nimi = juhlaheebo.name
-        numero = juhlaheebo.discriminator
-        await message.channel.send(nimi+ " "+ numero)
-    
+  if message.content.startswith('!wappujuhlaTEST'):
+    if len(juhlijat) > 0:
+      for juhlaheebo in juhlijat:
+        nimi = juhlaheebo.member.name
+        await message.channel.send(nimi)
+    else:
+      await message.channel.send("No partiers t.jöbbels :cry:")
+
 
 client.run(os.getenv("TOKEN"))
 
