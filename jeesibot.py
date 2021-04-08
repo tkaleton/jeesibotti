@@ -58,7 +58,6 @@ async def on_message(message):
     kirjoittaja = message.author
     if kirjoittaja not in juhlijat:
       juhlijat.append(kirjoittaja)
-    #msg = 'Sinut {0.kirjoittaja.mention} on lisätty wappujuhlijoihin'
     await message.channel.send(f'Sinut {kirjoittaja.mention} on lisätty wappujuhlijoihin')
 
   if message.content.startswith('!wappujuhlaOUT'):
@@ -69,7 +68,11 @@ async def on_message(message):
     await message.channel.send(f'Sinut {kirjoittaja.mention} on poistettu wappujuhlijoista')
     
   if message.content.startswith('!wappujuhlaTEST'):
-    await message.channel.send(juhlijat)
+    
+    for juhlaheebo in juhlijat:
+        nimi = juhlaheebo.name
+        await message.channel.send(nimi)
+    await message.channel.send("kutsu meni läpi mutta koodi oli paskaa")
 
 client.run(os.getenv("TOKEN"))
 
