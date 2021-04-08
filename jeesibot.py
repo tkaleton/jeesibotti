@@ -67,12 +67,13 @@ async def on_message(message):
     
     await message.channel.send(f'Sinut {kirjoittaja.mention} on poistettu wappujuhlijoista')
     
-  if message.content.startswith('!wappujuhlaTEST'):
+  if message.content.startswith('!wappujuhlijat'):
     
     for juhlaheebo in juhlijat:
         nimi = juhlaheebo.name
-        await message.channel.send(nimi)
-    await message.channel.send("kutsu meni läpi mutta koodi oli paskaa")
+        numero = juhlaheebo.discriminator
+        await message.channel.send(nimi+ " "+ numero)
+    
 
 client.run(os.getenv("TOKEN"))
 
