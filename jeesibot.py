@@ -8,10 +8,11 @@ import discord.ext
 from gifit import gifit
 from myyntitekstit import myyntitekstit
 from musattimet import musat
+from partypeople import partypeoples
 
 #from keep_alive import keep_alive
 
-juhlijat = []
+juhlijat = partypeoples
 client = discord.Client()
 
 def get_quote():
@@ -76,6 +77,9 @@ async def on_message(message):
     txt = ", ".join(temp)
     lkm = len(juhlijat)
     await message.channel.send(f'juhlijoita on {lkm} kappaletta \rHe ovat {txt}')
+
+  if message.content.startswith('!partypeople'):
+    await message.channel.send(f'juhlijoita on {lkm} kappaletta \rHe ovat {partypeoples}')
 
 
 client.run(os.getenv("TOKEN"))
