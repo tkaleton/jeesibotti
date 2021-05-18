@@ -32,14 +32,15 @@ async def on_message(message):
     
   if message.content.startswith('!vahvuusluku'):
     temp = []
-    await message.channel.send(f'Herra {kirjoittaja.mention}, suoritan vahvuuslaskennan!}')
+    kirjoittaja = message.author
+    await message.channel.send(f'Herra {kirjoittaja.mention}, suoritan vahvuuslaskennan!')
     for juhlaheebo in miehisto:
       nimi = juhlaheebo.name
       temp.append(nimi)
     txt = ", ".join(temp)
     lkm = len(miehisto)
     await message.channel.send(f'Herra {kirjoittaja.mention}, miehistössä on sotilaita {lkm} kappaletta \rHe ovat {txt}')
-    
+
   if message.content.startswith('!niksu'):
     await message.channel.send('https://tenor.com/view/retula-niko-j%C3%A4%C3%A4t%C3%A4v%C3%A4-apina-ice-gif-16883246')
 
