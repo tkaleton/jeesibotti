@@ -55,32 +55,33 @@ async def on_message(message):
   if message.content.startswith(('!jeesi' , '!jeesibot')):
     await message.channel.send("Jeesibotti tässä terve!\rOsaan seuraavat käskyt:\r!scrim / !scrims / !scrimit: Luo scrimikutsun tajunnanräjäyttävällä mainostekstillä :D \r!rockmyday / !rockyourday / !ryd: Tuo mietelauseen, joka mullistaa elämäsi\r!teevoileipa: Tekee voileivän \r!wappujuhlaIN: lisää sinut wappujuhlija listalle\r!wappujuhlaOUT: poistaa wappujuhlalistalta\r")
 
-  if message.content.startswith('!wappujuhlaIN'):
+  if message.content.startswith('!laivasto', '!hiiohoi'):
     kirjoittaja = message.author
     if kirjoittaja not in juhlijat:
       juhlijat.append(kirjoittaja)
   
-    await message.channel.send(f'Sinut {kirjoittaja.mention} on lisätty wappujuhlijoihin')
+    await message.channel.send(f'Tervetuloa miehistöön {kirjoittaja.mention}!')
 
-  if message.content.startswith('!wappujuhlaOUT'):
+  if message.content.startswith('!laivastoOUT'):
     kirjoittaja = message.author
     if kirjoittaja in juhlijat:
       juhlijat.remove(kirjoittaja)
     
-    await message.channel.send(f'Sinut {kirjoittaja.mention} on poistettu wappujuhlijoista')
+    await message.channel.send(f'Sinut {kirjoittaja.mention} on vapautettu palveluksesta')
     
-  if message.content.startswith('!wappujuhlaTEST'):
+  if message.content.startswith('!vahvuusluku'):
     temp = []
     for juhlaheebo in juhlijat:
       nimi = juhlaheebo.name
       temp.append(nimi)
     txt = ", ".join(temp)
     lkm = len(juhlijat)
-    await message.channel.send(f'juhlijoita on {lkm} kappaletta \rHe ovat {txt}')
+    await message.channel.send(f'Herra {kirjoittaja.mention}, miehistössä on sotilaita {lkm} kappaletta \rHe ovat {txt}')
 
-  if message.content.startswith('!partypeople'):
-    await message.channel.send(f'juhlijoita on {lkm} kappaletta \rHe ovat {partypeoples}')
+  if message.content.startswith('!niksu'):
+    await message.channel.send('https://tenor.com/view/retula-niko-j%C3%A4%C3%A4t%C3%A4v%C3%A4-apina-ice-gif-16883246')
 
+#TODO: connect partypeople to postgresql
 
 client.run(os.getenv("TOKEN"))
 
