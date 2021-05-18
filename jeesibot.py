@@ -29,21 +29,7 @@ async def on_ready():
 async def on_message(message):
   if message.author == client.user: 
     return
-    
-  if message.content.startswith('!laivasto', '!hiiohoi'):
-    kirjoittaja = message.author
-    if kirjoittaja not in miehisto:
-      miehisto.append(kirjoittaja)
   
-    await message.channel.send(f'Tervetuloa miehistöön {kirjoittaja.mention}!')
-
-  if message.content.startswith('!laivastoOUT'):
-    kirjoittaja = message.author
-    if kirjoittaja in miehisto:
-      miehisto.remove(kirjoittaja)
-    
-    await message.channel.send(f'Sinut {kirjoittaja.mention} on vapautettu palveluksesta')
-
   if message.content.startswith('!vahvuusluku'):
     temp = []
     kirjoittaja = message.author
@@ -65,10 +51,10 @@ async def on_message(message):
     await message.channel.send(gifit[random.randint(0,(len(gifit)-1))] )
     await message.channel.send(myyntitekstit[random.randint(0,(len(myyntitekstit)-1))])
 
-  if message.content.startswith('!teevoileipa'):
+  if message.content.contains('!teevoileipa'):
     await message.channel.send(":sandwich: ole hyvä!")
 
-  if message.content.startswith(('!rockmyday' , '!rockyourday' , '!ryd')):
+  if message.content.contains(('!rockmyday' , '!rockyourday' , '!ryd')):
     quote = get_quote()
     print("Sent following quote to server: " + quote +"\r\r" )
     await message.channel.send(quote)
@@ -78,13 +64,25 @@ async def on_message(message):
 
     for biisi in musat:
       await message.channel.send("!play " + biisi)
-  
+
+  if message.content.contains('!laivastoon'):
+    kirjoittaja = message.author
+    if kirjoittaja not in miehisto:
+      miehisto.append(kirjoittaja)
+      await message.channel.send(f'Tervetuloa miehistöön {kirjoittaja.mention}!')
+    else:
+      await message.channel.send(f'Olet jo miehistössä {kirjoittaja.mention}!')
+
+  if message.content.contains('!tahdonpois'):
+    kirjoittaja = message.author
+    if kirjoittaja in miehisto:
+      miehisto.remove(kirjoittaja)
+      await message.channel.send(f'Sinut {kirjoittaja.mention} on vapautettu palveluksesta')
+    else:
+      await message.channel.send(f'no mene sitten pois')
+
   if message.content.startswith(('!jeesi' , '!jeesibot')):
     await message.channel.send("Jeesibotti tässä terve!\rOsaan seuraavat käskyt:\r!scrim / !scrims / !scrimit: Luo scrimikutsun tajunnanräjäyttävällä mainostekstillä :D \r!rockmyday / !rockyourday / !ryd: Tuo mietelauseen, joka mullistaa elämäsi\r!teevoileipa: Tekee voileivän \r!wappujuhlaIN: lisää sinut wappujuhlija listalle\r!wappujuhlaOUT: poistaa wappujuhlalistalta\r")
-
-
-    
-
 
 
 
