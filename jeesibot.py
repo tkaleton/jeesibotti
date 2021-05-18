@@ -51,10 +51,10 @@ async def on_message(message):
     await message.channel.send(gifit[random.randint(0,(len(gifit)-1))] )
     await message.channel.send(myyntitekstit[random.randint(0,(len(myyntitekstit)-1))])
 
-  if message.content.contains('!teevoileipa'):
+  if message.content.startswith('!teevoileipa'):
     await message.channel.send(":sandwich: ole hyvä!")
 
-  if message.content.contains(('!rockmyday' , '!rockyourday' , '!ryd')):
+  if message.content.startswith(('!rockmyday' , '!rockyourday' , '!ryd')):#.contains -> .startswith
     quote = get_quote()
     print("Sent following quote to server: " + quote +"\r\r" )
     await message.channel.send(quote)
@@ -65,7 +65,7 @@ async def on_message(message):
     for biisi in musat:
       await message.channel.send("!play " + biisi)
 
-  if message.content.contains('!laivastoon'):
+  if message.content.startswith('!laivastoon'):
     kirjoittaja = message.author
     if kirjoittaja not in miehisto:
       miehisto.append(kirjoittaja)
@@ -73,7 +73,7 @@ async def on_message(message):
     else:
       await message.channel.send(f'Olet jo miehistössä {kirjoittaja.mention}!')
 
-  if message.content.contains('!tahdonpois'):
+  if message.content.startswith('!tahdonpois'):
     kirjoittaja = message.author
     if kirjoittaja in miehisto:
       miehisto.remove(kirjoittaja)
