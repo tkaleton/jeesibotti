@@ -12,7 +12,7 @@ from partypeople import partypeoples
 
 #from keep_alive import keep_alive
 
-juhlijat = partypeoples
+miehisto = []
 client = discord.Client()
 
 def get_quote():
@@ -57,25 +57,25 @@ async def on_message(message):
 
   if message.content.startswith('!laivasto', '!hiiohoi'):
     kirjoittaja = message.author
-    if kirjoittaja not in juhlijat:
-      juhlijat.append(kirjoittaja)
+    if kirjoittaja not in miehisto:
+      miehisto.append(kirjoittaja)
   
     await message.channel.send(f'Tervetuloa miehistöön {kirjoittaja.mention}!')
 
   if message.content.startswith('!laivastoOUT'):
     kirjoittaja = message.author
-    if kirjoittaja in juhlijat:
-      juhlijat.remove(kirjoittaja)
+    if kirjoittaja in miehisto:
+      miehisto.remove(kirjoittaja)
     
     await message.channel.send(f'Sinut {kirjoittaja.mention} on vapautettu palveluksesta')
     
   if message.content.startswith('!vahvuusluku'):
     temp = []
-    for juhlaheebo in juhlijat:
+    for juhlaheebo in miehisto:
       nimi = juhlaheebo.name
       temp.append(nimi)
     txt = ", ".join(temp)
-    lkm = len(juhlijat)
+    lkm = len(miehisto)
     await message.channel.send(f'Herra {kirjoittaja.mention}, miehistössä on sotilaita {lkm} kappaletta \rHe ovat {txt}')
 
   if message.content.startswith('!niksu'):
