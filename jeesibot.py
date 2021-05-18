@@ -2,13 +2,12 @@ import discord
 import os
 import requests
 import random
-import time
 import json
 import discord.ext
 from gifit import gifit
 from myyntitekstit import myyntitekstit
 from musattimet import musat
-from partypeople import partypeoples
+
 
 #from keep_alive import keep_alive
 
@@ -31,6 +30,19 @@ async def on_message(message):
   if message.author == client.user: 
     return
     
+  if message.content.startswith('!vahvuusluku'):
+    temp = []
+    await message.channel.send(f'Herra {kirjoittaja.mention}, suoritan vahvuuslaskennan!}')
+    for juhlaheebo in miehisto:
+      nimi = juhlaheebo.name
+      temp.append(nimi)
+    txt = ", ".join(temp)
+    lkm = len(miehisto)
+    await message.channel.send(f'Herra {kirjoittaja.mention}, miehistössä on sotilaita {lkm} kappaletta \rHe ovat {txt}')
+    
+  if message.content.startswith('!niksu'):
+    await message.channel.send('https://tenor.com/view/retula-niko-j%C3%A4%C3%A4t%C3%A4v%C3%A4-apina-ice-gif-16883246')
+
   if message.content.startswith("!dnd"):
     await message.channel.send("**ÄÄNESTYS:** Mikä päivä pelataan? \r:one: = ma :two: = ti :three: = ke :four: = to :five: = pe :six: = la :seven: = su")
 
@@ -69,17 +81,9 @@ async def on_message(message):
     
     await message.channel.send(f'Sinut {kirjoittaja.mention} on vapautettu palveluksesta')
     
-  if message.content.startswith('!vahvuusluku'):
-    temp = []
-    for juhlaheebo in miehisto:
-      nimi = juhlaheebo.name
-      temp.append(nimi)
-    txt = ", ".join(temp)
-    lkm = len(miehisto)
-    await message.channel.send(f'Herra {kirjoittaja.mention}, miehistössä on sotilaita {lkm} kappaletta \rHe ovat {txt}')
 
-  if message.content.startswith('!niksu'):
-    await message.channel.send('https://tenor.com/view/retula-niko-j%C3%A4%C3%A4t%C3%A4v%C3%A4-apina-ice-gif-16883246')
+
+
 
 #TODO: connect partypeople to postgresql
 
