@@ -30,6 +30,20 @@ async def on_message(message):
   if message.author == client.user: 
     return
     
+  if message.content.startswith('!laivasto', '!hiiohoi'):
+    kirjoittaja = message.author
+    if kirjoittaja not in miehisto:
+      miehisto.append(kirjoittaja)
+  
+    await message.channel.send(f'Tervetuloa miehistöön {kirjoittaja.mention}!')
+
+  if message.content.startswith('!laivastoOUT'):
+    kirjoittaja = message.author
+    if kirjoittaja in miehisto:
+      miehisto.remove(kirjoittaja)
+    
+    await message.channel.send(f'Sinut {kirjoittaja.mention} on vapautettu palveluksesta')
+
   if message.content.startswith('!vahvuusluku'):
     temp = []
     kirjoittaja = message.author
@@ -68,19 +82,7 @@ async def on_message(message):
   if message.content.startswith(('!jeesi' , '!jeesibot')):
     await message.channel.send("Jeesibotti tässä terve!\rOsaan seuraavat käskyt:\r!scrim / !scrims / !scrimit: Luo scrimikutsun tajunnanräjäyttävällä mainostekstillä :D \r!rockmyday / !rockyourday / !ryd: Tuo mietelauseen, joka mullistaa elämäsi\r!teevoileipa: Tekee voileivän \r!wappujuhlaIN: lisää sinut wappujuhlija listalle\r!wappujuhlaOUT: poistaa wappujuhlalistalta\r")
 
-  if message.content.startswith('!laivasto', '!hiiohoi'):
-    kirjoittaja = message.author
-    if kirjoittaja not in miehisto:
-      miehisto.append(kirjoittaja)
-  
-    await message.channel.send(f'Tervetuloa miehistöön {kirjoittaja.mention}!')
 
-  if message.content.startswith('!laivastoOUT'):
-    kirjoittaja = message.author
-    if kirjoittaja in miehisto:
-      miehisto.remove(kirjoittaja)
-    
-    await message.channel.send(f'Sinut {kirjoittaja.mention} on vapautettu palveluksesta')
     
 
 
